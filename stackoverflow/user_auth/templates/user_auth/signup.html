@@ -1,0 +1,10 @@
+{% extends 'temp.html' %}
+
+{% block title %}Hello{% endblock  %}
+{% block body %} <h1 class="text-3xl text-red-400">Hello</h1>
+<form action="/user_auth/signup/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+</form>
+{% endblock body %}

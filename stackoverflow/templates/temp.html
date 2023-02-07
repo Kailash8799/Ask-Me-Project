@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%block links%} {%endblock%}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>{%block title%} {% endblock %}</title>
+
+  {%block css%} <style>
+    @media (max-width:992px) {
+      .mart {
+        margin-top: 10px;
+        margin-left: 0px !important;
+      }
+    }
+    .textd{
+      text-decoration: none !important;
+    }
+  </style> {%endblock%}
+</head>
+
+<body>
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+        <button class="btn btn-primary ms-3 mart" data-bs-toggle="modal" data-bs-target="#login">Login</button>
+        <button class="btn btn-primary ms-2 mart" data-bs-toggle="modal" data-bs-target="#signup">SignUp</button>
+      </div>
+    </div>
+  </nav>
+  <!-- Modal -->
+  <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+        </div>
+        <form action="/user_auth/login/" method="post">{% csrf_token %}
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your email">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput2"  class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleFormControlInput2" placeholder="Enter your password">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Sign Up</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="exampleFormControlInput3" class="form-label">Name</label>
+              <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput5" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleFormControlInput5" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput4" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleFormControlInput4" placeholder="Enter your password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div style="min-height: 600px;">
+  {%block body%}{%endblock%}
+</div>
+
+  <!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4" style="text-decoration: none; font-size:x-large;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 " style="text-decoration: none; font-size:x-large;">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 " style="text-decoration: none; font-size:x-large;">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 " style="text-decoration: none; font-size:x-large;">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 " style="text-decoration: none; font-size:x-large;">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4" style="text-decoration: none; font-size:x-large;">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Ask Me !
+          </h6>
+          <p>
+            Here you can use rows and columns to organize your footer content. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset textd">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset textd">React</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset textd">Vue</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset textd">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="#!" class="textd text-reset">Pricing</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset textd">Settings</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset textd">Orders</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset textd">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Nadiad, Gujrat 10012, India</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            askmeteam@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> +91 8799312265</p>
+          <p><i class="fas fa-print me-3"></i> +91 9944339342</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2023 Copyright:
+    <a class=" fw-bold textd" href="">ASK ME!</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  {%block scripts%}{%endblock%}
+</body>
+
+</html>
